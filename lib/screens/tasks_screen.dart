@@ -41,7 +41,7 @@ class TasksScreen extends StatelessWidget {
               ],
             ),
             Text(
-              '444444444444444 tasks',
+              '4 tasks',
               style: TextStyle(color: Colors.white, fontSize: 18),
             ),
             SizedBox(
