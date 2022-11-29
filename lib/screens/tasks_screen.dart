@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:todoapp/screens/add_task_screen.dart';
 import 'package:todoapp/widgets/tasks_list.dart';
 
 class TasksScreen extends StatelessWidget {
@@ -11,7 +12,17 @@ class TasksScreen extends StatelessWidget {
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          showModalBottomSheet(
+            isScrollControlled: true,
+            context: context,
+            builder: (context) => SingleChildScrollView(
+                child: Container(
+                    padding: EdgeInsets.only(
+                        bottom: MediaQuery.of(context).viewInsets.bottom),
+                    child: AddTaskScreen())),
+          );
+        },
         backgroundColor: Colors.indigo[400],
         child: Icon(Icons.add),
       ),
