@@ -14,7 +14,7 @@ class TasksScreen extends StatefulWidget {
 }
 
 class _TasksScreenState extends State<TasksScreen> {
-   List<Task> tasks = [
+  List<Task> tasks = [
     Task(name: 'go shopping'),
     Task(name: 'buy a gift'),
     Task(name: 'repair a car'),
@@ -33,7 +33,12 @@ class _TasksScreenState extends State<TasksScreen> {
                 child: Container(
                     padding: EdgeInsets.only(
                         bottom: MediaQuery.of(context).viewInsets.bottom),
-                    child: AddTaskScreen())),
+                    child: AddTaskScreen((newTaskTitle) {
+                      setState(() {
+                        tasks.add(Task(name: newTaskTitle));
+                        Navigator.pop(context);
+                      });
+                    }))),
           );
         },
         backgroundColor: Colors.indigo[400],
@@ -66,7 +71,7 @@ class _TasksScreenState extends State<TasksScreen> {
               ],
             ),
             Text(
-              '4 tasks',
+              '${tasks.length} tasks',
               style: TextStyle(color: Colors.white, fontSize: 18),
             ),
             SizedBox(
